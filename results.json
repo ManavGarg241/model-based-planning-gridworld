@@ -1,0 +1,95 @@
+{
+  "model_metrics": {
+    "mse": 0.0018151254625990987,
+    "exact_match_accuracy": 1.0,
+    "avg_manhattan_error": 0.0
+  },
+  "random_metrics": {
+    "success_rate": 0.3333333333333333,
+    "avg_steps_successful_episodes": 16.85,
+    "avg_steps_all_episodes": 32.28333333333333
+  },
+  "planning_metrics": {
+    "success_rate": 1.0,
+    "avg_steps_successful_episodes": 4.666666666666667,
+    "avg_steps_all_episodes": 4.666666666666667
+  },
+  "generalization_metrics": {
+    "success_rate": 0.55,
+    "avg_steps_successful_episodes": 4.363636363636363,
+    "avg_steps_all_episodes": 20.4
+  },
+  "multi_environment_results": [
+    {
+      "environment": "Layout-A-default",
+      "start": [
+        0,
+        0
+      ],
+      "goal": [
+        5,
+        5
+      ],
+      "random": {
+        "success_rate": 0.375,
+        "avg_steps_successful_episodes": 13.2,
+        "avg_steps_all_episodes": 29.95
+      },
+      "planning": {
+        "success_rate": 1.0,
+        "avg_steps_successful_episodes": 4.35,
+        "avg_steps_all_episodes": 4.35
+      }
+    },
+    {
+      "environment": "Layout-B-diagonal-shift",
+      "start": [
+        5,
+        0
+      ],
+      "goal": [
+        0,
+        5
+      ],
+      "random": {
+        "success_rate": 0.325,
+        "avg_steps_successful_episodes": 12.692307692307692,
+        "avg_steps_all_episodes": 31.125
+      },
+      "planning": {
+        "success_rate": 0.85,
+        "avg_steps_successful_episodes": 4.4411764705882355,
+        "avg_steps_all_episodes": 9.775
+      }
+    },
+    {
+      "environment": "Layout-C-corridor",
+      "start": [
+        2,
+        0
+      ],
+      "goal": [
+        5,
+        4
+      ],
+      "random": {
+        "success_rate": 0.3,
+        "avg_steps_successful_episodes": 14.083333333333334,
+        "avg_steps_all_episodes": 32.225
+      },
+      "planning": {
+        "success_rate": 0.725,
+        "avg_steps_successful_episodes": 3.5172413793103448,
+        "avg_steps_all_episodes": 13.55
+      }
+    }
+  ],
+  "failure_case": {
+    "biased_planning_success": false,
+    "biased_planning_steps": 35,
+    "predicted_actual_mismatch_rate": 0.9142857142857143,
+    "mismatch_count": 32,
+    "trajectory_length": 35
+  },
+  "analysis": "Analysis\n--------\nPlanning success gain over random: 0.667 (absolute).\nHigher transition prediction quality typically improves planning because the search tree becomes a better proxy for real environment rollouts.\nModel appears accurate enough for short-horizon planning in this grid.\nGeneralization drop detected: changed map/start hurts planning because training transitions did not fully cover shifted dynamics near new obstacles.\nPlanning can break when compounding model errors accumulate over depth, especially near walls/obstacles where one wrong prediction changes reachable states."
+}
